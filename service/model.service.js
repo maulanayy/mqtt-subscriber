@@ -8,10 +8,7 @@ const MEwon = () => {
     try {
       const data = await MEwonSubscriberSetting.findAll({
         attributes: [
-          "intEwonSubsSettingID",
           "txtTopic",
-          "txtTypeTopic",
-          "txtStatus",
         ],
         raw: true,
       });
