@@ -9,16 +9,13 @@ const main = async () => {
   await dbService().start();
 
   const dataEwons = await modelService().getAll()
-  const topics = dataEwons.map(x => {return x.txtTopic});
+  const topics = dataEwons.map(x => {return x.txtTopic}); 
+  //["ewons/test/messages6","ewons/test/messages5","ewons/test/messages7"]
 
   if (client.connected) {
     console.log("MQTT : ",client.connected)
     client.subscribe(topics)
   }
-  // client.on("connect",() => {
-  //   console.log("CONNECTED MQTT");
-  //   client.subscribe(["/tyto/flexy","ewons/test/messages6","testing_update"])
-  // })
 
   client.on("message", (topic, message) => {
     const found = topics.find(x => {
